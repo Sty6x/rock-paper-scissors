@@ -5,6 +5,7 @@ function computerPlay() {
 }
 
 
+
 function gameLoop(playerSelection, computerSelection) {
     let announce;
     let noPoints = false;
@@ -12,31 +13,27 @@ function gameLoop(playerSelection, computerSelection) {
     // let playerPoints;
     // let computerPoints;
     if (playerSelection == computerSelection) {
-        announce = `It's a tie!\nYou chose: ${playerSelection} \nComputer Chose: ${computerSelection}`;
         noPoints = true;
     } else if (playerSelection == 'rock' & computerSelection == 'scissors') {
-
         win = true;
     } else if (playerSelection == 'rock' & computerSelection == 'paper') {
-
         win = false;
     } else if (playerSelection == 'paper' & computerSelection == 'rock') {
-
         win = true;
     } else if (playerSelection == 'paper' & computerSelection == 'scissors') {
-
         win = false;
     } else if (playerSelection == 'scissors' & computerSelection == 'rock') {
-
         win = false;
     } else if (playerSelection == 'scissors' & computerSelection == 'paper') {
-
         win = true;
     }
+    if (playerSelection == computerSelection) {
+        return null
+    } else {
+        return win;
+    }
 
-    return win;
 }
-
 
 function game() {
     let score = 0;
@@ -49,17 +46,20 @@ function game() {
             playerSelection = prompt("Please Enter Your Choice", "Rock, Paper Or Scissors").toLowerCase(); // takes user input
             const computerSelection = computerPlay(); // Computer Selection
             gameLoop(playerSelection, computerSelection) ? score++ : cpuScore++; // increments player and computer scores
-            announce = alert(`Player Chose ${playerSelection}\nComputer Chose ${computerSelection}`);
+            announce = alert(`Player Chose: ${playerSelection}\nComputer Chose: ${computerSelection}`);
+            if (playerSelection == computerSelection ) {
+                score = score; 
+                cpuScore = cpuScore;
+                announce = alert(`It's a Tie!`);
+            }
         };
-        announce = `Player Score: ${score}\nComputer Score: ${cpuScore}`;
+        score > cpuScore ? announce = `Player Score: ${score}\nComputer Score: ${cpuScore}\nYou Won!` :
+            announce = `Player Score: ${score}\nComputer Score: ${cpuScore}\nComputer Won!`
     } else {
-        // announce = `Player Score: ${score}\nComputer Score: ${cpuScore}`;
+        announce = `Player Score: ${score}\nComputer Score: ${cpuScore}`;
         announce = "You Quit";
     }
-
-    score > cpuScore ? announce = `Player Score: ${score}\nComputer Score: ${cpuScore}\nYou Won!` :
-    announce = `Player Score: ${score}\nComputer Score: ${cpuScore}\nComputer Won!` 
-    console.log(announce);
+    alert(announce);
 }
 
 game();
