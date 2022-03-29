@@ -15,22 +15,22 @@ function gameLoop(playerSelection, computerSelection) {
         announce = `It's a tie!\nYou chose: ${playerSelection} \nComputer Chose: ${computerSelection}`;
         noPoints = true;
     } else if (playerSelection == 'rock' & computerSelection == 'scissors') {
-        // announce = `You Won!\nYou chose: ${playerSelection} \nComputer Chose: ${computerSelection}`;
+
         win = true;
     } else if (playerSelection == 'rock' & computerSelection == 'paper') {
-        // announce = `Computer wins!\nYou chose: ${playerSelection} \nComputer Chose: ${computerSelection}`;
+
         win = false;
     } else if (playerSelection == 'paper' & computerSelection == 'rock') {
-        // announce = `You Won!\nYou chose: ${playerSelection} \nComputer Chose: ${computerSelection}`;
+
         win = true;
     } else if (playerSelection == 'paper' & computerSelection == 'scissors') {
-        // announce = `Computer wins!\nYou chose: ${playerSelection} \nComputer Chose: ${computerSelection}`;
+
         win = false;
     } else if (playerSelection == 'scissors' & computerSelection == 'rock') {
-        // announce = `Computer wins!\nYou chose: ${playerSelection} \nComputer Chose: ${computerSelection}`;
+
         win = false;
     } else if (playerSelection == 'scissors' & computerSelection == 'paper') {
-        // announce = `You won!\nYou chose: ${playerSelection} \nComputer Chose: ${computerSelection}`;
+
         win = true;
     }
 
@@ -43,25 +43,23 @@ function game() {
     let cpuScore = 0;
     let announce;
     let playOrNay = confirm("Play or Cancel?");
-    if (playOrNay){
+    let playerSelection;
+    if (playOrNay || playerSelection) {
         for (let i = 0; i < 5; i++) {
-            const playerSelection = prompt("Please Enter Your Choice", "Rock, Paper Or Scissors").toLowerCase();
-            gameLoop(playerSelection.toLowerCase(), computerSelection) ? score++ : cpuScore++;
+            playerSelection = prompt("Please Enter Your Choice", "Rock, Paper Or Scissors").toLowerCase(); // takes user input
+            const computerSelection = computerPlay(); // Computer Selection
+            gameLoop(playerSelection, computerSelection) ? score++ : cpuScore++; // increments player and computer scores
+            announce = alert(`Player Chose ${playerSelection}\nComputer Chose ${computerSelection}`);
         };
-       
-    }
-    else{
         announce = `Player Score: ${score}\nComputer Score: ${cpuScore}`;
+    } else {
+        // announce = `Player Score: ${score}\nComputer Score: ${cpuScore}`;
+        announce = "You Quit";
     }
- 
-    console.log(announce)
+
+    score > cpuScore ? announce = `Player Score: ${score}\nComputer Score: ${cpuScore}\nYou Won!` :
+    announce = `Player Score: ${score}\nComputer Score: ${cpuScore}\nComputer Won!` 
+    console.log(announce);
 }
-const computerSelection = computerPlay();
+
 game();
-// console.log(game());
-
-
-
-
-
-// console.log(gameLoop(playerSelection.toLowerCase(),computerSelection));
