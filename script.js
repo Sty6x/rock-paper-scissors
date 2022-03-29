@@ -42,31 +42,25 @@ function gameLoop(playerSelection,computerSelection){
         win = true;
     }
 
-    return true;
+    return win;
 }
 
 
 function game(){
+    let score = 0;
+    let cpuScore = 0;
     for (let i = 0; i < 5; i++){
-        let score = 0;
-        let cpuScore = 0;
-        if (gameLoop(playerSelection.toLowerCase(),computerSelection)){
-            score++; 
-        } 
-        else{
-            cpuScore++;
-        }
-        
-
+        const playerSelection = prompt("Please Enter Your Choice", "Rock, Paper Or Scissors").toLowerCase();
+        gameLoop(playerSelection.toLowerCase(),computerSelection)? score++ : cpuScore++;
     };
 
+    console.log(score, cpuScore);
 
 }
-
-
-
-const playerSelection = 'PApEr';
 const computerSelection = computerPlay();
+console.log(game());
+
+
 
 
 
