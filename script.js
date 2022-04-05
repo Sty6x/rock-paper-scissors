@@ -47,10 +47,11 @@ function game() {
             const computerSelection = computerPlay(); // Computer Selection
             gameLoop(playerSelection, computerSelection) ? score++ : cpuScore++; // increments player and computer scores
             announce = alert(`Player Chose: ${playerSelection}\nComputer Chose: ${computerSelection}`);
-            if (playerSelection == computerSelection ) {
-                score = score; 
+            if (playerSelection == computerSelection) {
+                score = score;
                 cpuScore = cpuScore;
-                announce = alert(`It's a Tie!`);
+                alert(`It's a Tie!`);
+                // equalling to its last score 
             }
         };
         score > cpuScore ? announce = `Player Score: ${score}\nComputer Score: ${cpuScore}\nYou Won!` :
@@ -63,3 +64,5 @@ function game() {
 }
 
 game();
+
+// bugs when clicking on cancel on prompt, it returns an error
