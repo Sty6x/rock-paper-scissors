@@ -6,6 +6,7 @@ const buttons = document.querySelectorAll('button');
 
 
 
+
 function computerPlay() {
     let choices = ['rock', 'paper', 'scissors']
     let theChoice = choices[Math.floor(Math.random() * choices.length)]
@@ -16,67 +17,39 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
     let noPoints = false;
     let win;
-    // let playerPoints;
-    // let computerPoints;
     if (playerSelection == computerSelection) {
         noPoints = true;
-    } else if (playerSelection == rock & computerSelection == 'scissors') {
+    } else if (playerSelection == 'rock' & computerSelection == 'scissors') {
         win = true;
-    } else if (playerSelection == rock & computerSelection == 'paper') {
+    } else if (playerSelection == 'rock' & computerSelection == 'paper') {
         win = false;
-    } else if (playerSelection == paper & computerSelection == 'rock') {
+    } else if (playerSelection == 'paper' & computerSelection == 'rock') {
         win = true;
-    } else if (playerSelection == paper & computerSelection == 'scissors') {
+    } else if (playerSelection == 'paper' & computerSelection == 'scissors') {
         win = false;
-    } else if (playerSelection == scissors & computerSelection == 'rock') {
+    } else if (playerSelection == 'scissors' & computerSelection == 'rock') {
         win = false;
-    } else if (playerSelection == scissors & computerSelection == 'paper') {
+    } else if (playerSelection == 'scissors' & computerSelection == 'paper') {
         win = true;
-    }
-    if (playerSelection == computerSelection) {
-        return null
-    } else {
-        return win;
     }
 
 }
-buttons.forEach((button) => {
 
-    button.addEventListener('click', playRound)
+
+// a function that changes the playerSelection to either rock paper or scissors
+
+
+rock.addEventListener('click', () => {
+    selection = 'rock'
+    console.log(selection)
 })
-buttons.forEach((button) => {
-
-    button.addEventListener('click', () => {
-        console.log(button.id)
-    }
-    )
+paper.addEventListener('click', () => {
+    selection = 'paper'
+    console.log(selection)
+})
+scissors.addEventListener('click', () => {
+    selection = 'scissors'
+    console.log(selection)
 })
 
-// function game() {
-//     let score = 0;
-//     let cpuScore = 0;
-//     let announce;
-//     let playOrNay = confirm("Play or Cancel?");
-//     let playerSelection;
-//     if (playOrNay || playerSelection) {
-//         for (let i = 0; i < 5; i++) {
-//             playerSelection = prompt("Please Enter Your Choice", "Rock, Paper Or Scissors").toLowerCase(); // takes user input
-//             const computerSelection = computerPlay(); // Computer Selection
-//             playRound(playerSelection, computerSelection) ? score++ : cpuScore++; // increments player and computer scores
-//             announce = alert(`Player Chose: ${playerSelection}\nComputer Chose: ${computerSelection}`);
-//             if (playerSelection == computerSelection ) {
-//                 score = score; 
-//                 cpuScore = cpuScore;
-//                 announce = alert(`It's a Tie!`);
-//             }
-//         };
-//         score > cpuScore ? announce = `Player Score: ${score}\nComputer Score: ${cpuScore}\nYou Won!` :
-//             announce = `Player Score: ${score}\nComputer Score: ${cpuScore}\nComputer Won!`
-//     } else {
-//         announce = `Player Score: ${score}\nComputer Score: ${cpuScore}`;
-//         announce = "You Quit";
-//     }
-//     alert(announce);
-// }
-
-// game();
+// console.log(playRound(selection, computerPlay()));
