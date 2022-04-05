@@ -2,14 +2,7 @@
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors')
-
-
-function reveal(){
-    console.log('rock')
-}
-
-rock.addEventListener('click', reveal);
-
+const buttons = document.querySelectorAll('button');
 
 
 
@@ -20,7 +13,6 @@ function computerPlay() {
 }
 
 
-
 function playRound(playerSelection, computerSelection) {
     let noPoints = false;
     let win;
@@ -28,17 +20,17 @@ function playRound(playerSelection, computerSelection) {
     // let computerPoints;
     if (playerSelection == computerSelection) {
         noPoints = true;
-    } else if (playerSelection == 'rock' & computerSelection == 'scissors') {
+    } else if (playerSelection == rock & computerSelection == 'scissors') {
         win = true;
-    } else if (playerSelection == 'rock' & computerSelection == 'paper') {
+    } else if (playerSelection == rock & computerSelection == 'paper') {
         win = false;
-    } else if (playerSelection == 'paper' & computerSelection == 'rock') {
+    } else if (playerSelection == paper & computerSelection == 'rock') {
         win = true;
-    } else if (playerSelection == 'paper' & computerSelection == 'scissors') {
+    } else if (playerSelection == paper & computerSelection == 'scissors') {
         win = false;
-    } else if (playerSelection == 'scissors' & computerSelection == 'rock') {
+    } else if (playerSelection == scissors & computerSelection == 'rock') {
         win = false;
-    } else if (playerSelection == 'scissors' & computerSelection == 'paper') {
+    } else if (playerSelection == scissors & computerSelection == 'paper') {
         win = true;
     }
     if (playerSelection == computerSelection) {
@@ -48,6 +40,17 @@ function playRound(playerSelection, computerSelection) {
     }
 
 }
+buttons.forEach((button) => {
+
+    button.addEventListener('click', playRound)
+})
+buttons.forEach((button) => {
+
+    button.addEventListener('click', () => {
+        console.log(button.id)
+    }
+    )
+})
 
 // function game() {
 //     let score = 0;
