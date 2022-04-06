@@ -7,7 +7,7 @@ const tieScore = document.createElement('div');
 const body = document.querySelector('body')
 body.appendChild(showPlayerScore);
 body.appendChild(showEnemyScore)
-body.appendChild(tieScore);
+
 
 
 // declaring variables
@@ -29,16 +29,13 @@ function playRound(playerSelection, computerSelection) {
         playerSelection == 'scissors' && computerSelection == 'paper' ||
         playerSelection == 'paper' && computerSelection == 'rock') {
         playerScore += 1;
-        body.removeChild(tieScore);
+        tieScore.textContent = `It's a tie!`
         showPlayerScore.textContent = `player Score: ${playerScore}`;
         if (playerScore == 5){
             body.innerHTML = '<span> Player Wins: 5 </span>'
         }
         
-    } else if (playerSelection == computerSelection) {
-        body.appendChild(tieScore);
-        tieScore.textContent = `It's a tie!`
-    }
+    } 
     // computer
     else {
         computerScore += 1
@@ -53,5 +50,6 @@ buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
         playRound(e.target.id, computerPlay())
         
+       
     })
 });
