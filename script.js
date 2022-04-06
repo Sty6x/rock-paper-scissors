@@ -16,26 +16,46 @@ function computerPlay() {
 }
 
 
+function playRound(e, computerSelection){
+    let playerSelection = '';
+    switch (e.target.id) {
+        case 'rock':
+            playerSelection = 'rock';
+            break;
+        case 'paper':
+            playerSelection = 'paper'
+            break;
+        case 'scissors':
+            playerSelection = 'scissors'
+            break;
+    }
+    console.log(playerSelection);
+
+}
+
+
 buttons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        let playerSelection = '';
-        switch (e.target.id) {
-            case 'rock':
-                playerSelection = 'rock';
-                break;
-            case 'paper':
-                playerSelection = 'paper'
-                break;
-            case 'scissors':
-                playerSelection = 'scissors'
-                break;
-        }
+    button.addEventListener('click', playRound)
+    });
 
-        console.log(playerSelection);
 
-    })
-})
+//     (e) => {
+//         let playerSelection = '';
+//         switch (e.target.id) {
+//             case 'rock':
+//                 playerSelection = 'rock';
+//                 break;
+//             case 'paper':
+//                 playerSelection = 'paper'
+//                 break;
+//             case 'scissors':
+//                 playerSelection = 'scissors'
+//                 break;
+//         }
+//         console.log(playerSelection);
 
+//     })
+// })
 // console.log(computerPlay());
 
 // a function that changes the playerSelection to either rock paper or scissors
