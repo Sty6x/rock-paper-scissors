@@ -1,7 +1,7 @@
 // Referencing nodes
-const rock = document.querySelector('#rock');
-const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors')
+// const rock = document.querySelector('#rock');
+// const paper = document.querySelector('#paper');
+// const scissors = document.querySelector('#scissors')
 const buttons = document.querySelectorAll('button');
 
 
@@ -11,62 +11,28 @@ const buttons = document.querySelectorAll('button');
 
 function computerPlay() {
     let choices = ['rock', 'paper', 'scissors']
-    let theChoice = choices[Math.floor(Math.random() * choices.length)]
-    return theChoice;
+    // let theChoice = choices[Math.floor(Math.random() * choices.length)]
+    return choices[Math.floor(Math.random() * choices.length)];
 }
 
 
-function playRound(e, computerSelection){
-    let playerSelection = '';
-    switch (e.target.id) {
-        case 'rock':
-            playerSelection = 'rock';
-            break;
-        case 'paper':
-            playerSelection = 'paper'
-            break;
-        case 'scissors':
-            playerSelection = 'scissors'
-            break;
-    }
-    console.log(playerSelection);
+function playRound(playerSelection, computerSelection) {
+    
 
+    
+
+    // if (playerSelection == computerSelection){
+    //     console.log(`its a tie: \nplayer: ${playerSelection} \ncomputer: ${computerSelection}`)
+    // }
+
+    console.log(playerSelection, computerSelection);
 }
 
 
 buttons.forEach((button) => {
-    button.addEventListener('click', playRound)
-    });
+    button.addEventListener('click', (e) => {
+        playRound(e.target.id, computerPlay())
+    })
+});
 
 
-//     (e) => {
-//         let playerSelection = '';
-//         switch (e.target.id) {
-//             case 'rock':
-//                 playerSelection = 'rock';
-//                 break;
-//             case 'paper':
-//                 playerSelection = 'paper'
-//                 break;
-//             case 'scissors':
-//                 playerSelection = 'scissors'
-//                 break;
-//         }
-//         console.log(playerSelection);
-
-//     })
-// })
-// console.log(computerPlay());
-
-// a function that changes the playerSelection to either rock paper or scissors
-
-
-
-// test area
-// buttons.forEach((button) => {
-//     button.addEventListener('click',buttonClick)
-// })
-
-// function buttonClick(e){
-//     console.log(typeof e.target.id);
-// }
